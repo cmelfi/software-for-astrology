@@ -1,0 +1,8 @@
+#!/usr/bin/tclsh
+# Формула Поправка = 11.6' * sin (2 * широта)
+set a 0
+while {$a <= 5400} {
+puts "[expr $a/60]°[expr $a%60]'\
+set b [expr 11.6 * [::tcl::mathfunc::sin [expr 3.1415926535897932384626433832 * $a / 5400]]]\'\
+set a [expr {$a + 1}]
+}
