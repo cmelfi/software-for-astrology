@@ -1,0 +1,13 @@
+#!/usr/bin/tclsh
+# Положение светил на начало суток
+# Используется swetest и tcl
+puts "Положение светил на начало всемирных суток
+Дата JD ♇ ♆ ⛢ ♄ ♃ ♂ ♀ ☿ ☽ ☉ ⚸"
+puts "Введите дату начала периода в формате ДД.ММ.ГГГГ "
+set a [expr [exec swetest -b[gets stdin] | grep ET: | cut -c 5-23] + 0]
+puts "Введите дату окончания периода в формате ДД.ММ.ГГГГ "
+set b [expr [exec swetest -b[gets stdin] | grep ET: | cut -c 5-23] + 0]
+while {$a < $b} {
+puts "[exec swetest -j$a | grep date | cut -c 12-22 | sed s/j//g | sed s/u//g | sed s/l//g | sed s/g//g | sed s/r//g | sed s/\ .//g | sed s/\ //g] $a [exec swetest -j$a -roundsec | grep Pluto | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Neptune | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Uranus | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Saturn | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Jupiter | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Mars | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Venus | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Mercury | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Moon | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Sun | cut -c 18-28 | sed s/\ //g] [exec swetest -j$a -roundsec | grep Apogee | cut -c 18-28 | sed s/\ //g]"
+set a [expr {$a + 1}]
+}
