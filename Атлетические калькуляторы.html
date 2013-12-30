@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<SCRIPT language=JavaScript>
+<!--
+function Calc1(form){
+     if (!Check(form.weight.value)){
+          return;
+     }
+     if (!Check(form.reps.value)){
+          return;
+     }
+     if (!Check(form.popravka1.value)){
+          return;
+     }
+     if(!form.weight.value || !form.reps.value){
+         alert("Недостаточно информации - введите вес и повторения!");
+         return;
+     }
+   	 var popr = form.popravka1.value;
+	 	 if (!popr){popr = 1;}
+     form.max.value =  Math.round(form.weight.value / (1.0278 - (0.0278 * form.reps.value))* 100 * popr) / 100;
+}
+function Popr1(form){
+     if (!Check(form.max.value)){
+          return;
+     }
+     if (!Check(form.weight.value)){
+          return;
+     }
+     if (!Check(form.reps.value)){
+          return;
+     }
+	 
+	 if(!form.max.value || !form.weight.value || !form.reps.value){
+         alert("Недостаточно информации - введите: вес, повторения, реальный максимальный вес в одном повторении!");
+         return;
+     }
+	 
+	 form.popravka1.value =  Math.round(form.weight.value / (1.0278 - (0.0278 * form.reps.value))* 100 / form.max.value) / 100; 
+}
+
+function Calc2(form){
+     if (!Check(form.max.value)){
+          return;
+     }
+     if (!Check(form.weight.value)){
+          return;
+     }
+     if (!Check(form.popravka2.value)){
+          return;
+     }
+	 
+	 if(!form.max.value || !form.weight.value){
+         alert("Недостаточно информации - введите максимальный вес и рабочий!");
+         return;
+     }
+
+   var popr = form.popravka2.value;
+	 if (!popr){popr = 1;}
+	 form.reps.value =  Math.round((((( 1.0278 - (form.weight.value/form.max.value) ) / 0.0278))*popr*100))/100;
+}
+function Popr2(form){
+     if (!Check(form.max.value)){
+          return;
+     }
+     if (!Check(form.weight.value)){
+          return;
+     }
+     if (!Check(form.reps.value)){
+          return;
+     }
+	 
+	 if(!form.max.value || !form.weight.value || !form.reps.value){
+         alert("Недостаточно информации - введите максимальный вес в одном повторении, вес, прогнозируемое количество повторений!");
+         return;
+     }
+	 
+	 form.popravka2.value =  Math.round((((( 1.0278 - (form.weight.value/form.max.value) ) / 0.0278))*100)/form.reps.value)/100; 
+}
+
+function Calc3(form){
+     if (!Check(form.max.value)){
+          return;
+     }
+     if (!Check(form.reps.value)){
+          return;
+     }
+     if (!Check(form.popravka3.value)){
+          return;
+     }
+     if(!form.max.value || !form.reps.value){
+         alert("Недостаточно информации - введите максимальный вес и повторения!");
+         return;
+     }
+   
+   var popr = form.popravka3.value;
+	 if (!popr){popr = 1;}
+     
+   form.weight.value =  Math.round((1.0278 - (0.0278*form.reps.value)) * form.max.value * 100 * popr) / 100;
+}
+
+function Popr3(form){
+     if (!Check(form.max.value)){
+          return;
+     }
+     if (!Check(form.weight.value)){
+          return;
+     }
+     if (!Check(form.reps.value)){
+          return;
+     }
+	 
+	 if(!form.max.value || !form.weight.value || !form.reps.value){
+         alert("Недостаточно информации - введите максимальный вес, повторения, прогнозируемый вес");
+         return;
+     }
+	 
+	 form.popravka3.value =  Math.round((1.0278 - (0.0278*form.reps.value)) * form.max.value * 100 / form.weight.value) / 100;
+}
+
+
+function Check(input){
+     var ok = true;
+     for(var i=0; i<input.length; i++){
+          var inp=input.charAt(i);
+          if (inp!="1" && inp!="2" && inp!="3" && inp!="4" && inp!="5" && inp!="6"
+               && inp!="7" && inp!="8" && inp!="9" && inp!="0" && inp!= ".")
+          {
+     alert("Неправильный ввод - необходимо вводить лишь положительные значения!");
+     ok = false;
+     return ok;
+     }
+}
+return ok;
+}
+
+// -->
+</SCRIPT>
+
+<h1>Атлетические калькуляторы</h1>
+<hr width="99%" size="1" noshade color="#64322F">
+
+<p>Калькуляторы могут помочь вам в составлении тренировочных программ, спрогнозировать результаты на соревнованиях, правильно подобрать вес при выполнении проходки. </p>
+
+<p><strong>Калькуляторы могут предсказать: </strong></p>
+<p>- сколько Вы можете выжать на максимум; <br>
+- сколько повторений Вы сможете сделать с определённым весом; <br>
+- какой вес Вы сможете поднять в определённом количестве повторений. </p>
+
+<table width="100%"  border="0" cellspacing="5" cellpadding="0">
+  <tr>
+    <td style="border:1px solid #D8E0EA; background-color:#F3F6FB;">
+	
+	<p class="titlenewsvip"><b>1. Калькулятор максимального веса</b></p>
+
+<table width="95%"  border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td width="330" class="mainpostvip_art mainvip">
+   
+<FORM method=post>
+<TABLE border=0 cellpadding="0" cellspacing="2">
+<TR><TD width="250" valign="top"><div class="mainbook">Вес:</div></TD>
+<TD width="120" valign="top" nowrap>
+<INPUT  maxLength=10 size=10 name=weight></TD></TR>
+<TR><TD width="250" valign="top"><div class="mainbook">Повторения:</div></TD>
+<TD width="120" valign="top" nowrap>
+<INPUT  maxLength=10 size=10 name=reps></TD></TR>
+<TR><TD width="250" valign="top"><div class="mainbook"> Поправочный коэффициент:</div></TD>
+
+<td width="120" valign="top" nowrap><INPUT  maxLength=10 size=10 name=popravka1 value=1>
+<INPUT onclick=Popr1(this.form) type=button value=&gt;&gt; name=Popr1Button></td></TR>
+<TR><TD width="250" valign="top"><div class="mainbook">Прогнозируемый макс. вес в одном повторении:</div></TD>
+<TD width="120" valign="top" nowrap><INPUT maxLength=10  size=10 name=max>
+<INPUT onclick=Calc1(this.form) type=button value=&gt;&gt; name=Calc1Button></TD></TR></TABLE>
+</form>
+
+</td>
+<td valign="top"><div align="left">Калькулятор предсказывают вес, который Вы теоретически можете поднять в одном повторении, если известно, какой вес Вы поднимаете в определённом количестве повторений. 
+</div></td>
+</tr>
+</table>
+
+<p class="titlenewsvip""><b>2. Калькулятор повторений</b></p>
+<table width="95%"  border="0" cellspacing="10" cellpadding="0">
+
+  <tr>
+    <td width="330" class="mainpostvip_art mainvip"><FORM method=post>
+      <TABLE border=0 cellpadding="0" cellspacing="2">
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook">Макс. вес в одном повторении:</div></TD>
+          <TD width="120" valign="top" nowrap>
+            <INPUT  maxLength=10 size=10 name=max></TD>
+        </TR>
+
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook">Вес:</div></TD>
+          <TD width="120" valign="top" nowrap>
+            <INPUT  maxLength=10 size=10 name=weight></TD>
+        </TR>
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook"> Поправочный коэффициент:</div></TD>
+
+          <td width="120" valign="top" nowrap><INPUT  maxLength=10 size=10 name=popravka2 value=1>
+              <INPUT onclick=Popr2(this.form) type=button value=&gt;&gt; name=Popr2Button></td>
+        </TR>
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook">Прогнозируемое количество повторений:</div></TD>
+          <TD width="120" valign="top" nowrap><INPUT maxLength=10  size=10 name=reps>
+              <INPUT onclick=Calc2(this.form) type=button value=&gt;&gt; name=Calc2Button></TD>
+        </TR>
+
+      </TABLE>
+    </form></td>
+    <td valign="top"><div align="left">Калькулятор предсказывает количество повторений, которые Вы теоретически можете сделать с определённым весом при условии, что Вы уже знаете свой максимальный вес в одном повторении. Калькуляторы рассчитан для  расчета количества повторений с весом не менее 75% от максимального. </div></td>
+  </tr>
+</table>
+<p class="titlenewsvip""><b>3. Калькулятор рабочего веса</b></p>
+<table width="95%"  border="0" cellspacing="10" cellpadding="0">
+
+  <tr>
+
+    <td width="330" class="mainpostvip_art mainvip"><FORM method=post>
+      <TABLE border=0 cellpadding="0" cellspacing="2">
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook">Макс. вес в одном повторении:</div></TD>
+          <TD width="120" valign="top" nowrap>
+            <INPUT  maxLength=10 size=10 name=max></TD>
+        </TR>
+        <TR>
+
+          <TD width="250" valign="top"><div class="mainbook">Повторения:</div></TD>
+          <TD width="120" valign="top" nowrap>
+            <INPUT  maxLength=10 size=10 name=reps></TD>
+        </TR>
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook"> Поправочный коэффициент:</div></TD>
+          <td width="120" valign="top" nowrap><INPUT  maxLength=10 size=10 name=popravka3 value=1>
+
+              <INPUT onclick=Popr3(this.form) type=button value=&gt;&gt; name=Popr3Button></td>
+        </TR>
+        <TR>
+          <TD width="250" valign="top"><div class="mainbook">Прогнозируемый вес:</div></TD>
+          <TD width="120" valign="top" nowrap><INPUT maxLength=10  size=10 name=weight>
+              <INPUT onclick=Calc3(this.form) type=button value=&gt;&gt; name=Calc3Button></TD>
+        </TR>
+      </TABLE>
+
+    </form></td>
+    <td valign="top"><div align="left">Калькулятор предсказывают, с каким весом Вы можете сделать заданное количество повторений при условии, что Вы уже знаете свой максимальный вес в одном повторении. Калькулятор рассчитан для расчетов в диапазоне 2-10 повторений. </div></td>
+  </tr>
+</table>
+	</td>
+  </tr>
+</table>
+<p>В основу расчетов были положены модифицированные формулы <strong>Матту Бржыки</strong>. Калькуляторы довольно точны при расчете тренировок с диапазоном повторений от 2-х до 10-ти. </p>
+
+<p>Для максимальной точности расчетов был введен «Поправочный коэффициент», который рассчитывается индивидуально для каждого человека с помощью тех же самых калькуляторов. Он базируется на Вашем предыдущем опыте и может зависеть от вида рассчитываемого упражнения. </p>
+<p>&nbsp;</p>
+<!-- end content -->
+<div style="background-color:#F3F6FB; border:1px solid #D8E0EA;  padding:5px;">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0"><tr>
+<td>
+<div align="center">
+</body>
+</html>
