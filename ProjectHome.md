@@ -1,0 +1,1 @@
+There are programs for astrological calculations. My and others' free software licensed under the GNU GPLv3 and strangers unfree -  on copyright.
